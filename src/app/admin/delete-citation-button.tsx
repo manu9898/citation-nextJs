@@ -17,7 +17,7 @@ export function DeleteCitationButton(props: {id:number}){
             router.refresh();
         }
     }
-    return <Button onClick={()=>{
+    return <Button size="sm" onClick={()=>{
         if (isConfirm){
             onDelete();
         } else {
@@ -25,6 +25,6 @@ export function DeleteCitationButton(props: {id:number}){
         }
 
     }} variant={isConfirm? "destructive" : "outline"}>
-        X
+        🗑️
     </Button>
 }

@@ -1,4 +1,6 @@
 import {Card, CardHeader, CardTitle} from "@/components/ui/card";
+import {prisma} from "@/lib/prisma";
+import {CitationForm} from "@/app/admin/citations/citation-form";
 
 export default async function Page(props:{
     params:Promise<{
@@ -9,13 +11,22 @@ export default async function Page(props:{
 
 {
     const params = await props.params;
-    const searchParams = await props.searchParams;
-    return(
-        <Card>
+    const citationId = params.citationId;
+    const citation = await prisma.citation.findFirst({
+        where:{
+            id: Number(params.citationId),
+        },
+})
+
+    if (!citation) {
+        return <Card>
             <CardHeader>
-                <CardTitle>{JSON.stringify(params, null, 2 )}</CardTitle>
-                <CardTitle>{JSON.stringify(searchParams, null, 2 )}</CardTitle>
+                <CardTitle>The citation {citationId} not exist.</CardTitle>
             </CardHeader>
         </Card>
+    }
+
+    return(
+        <CitationForm citation={citation}/>
     )
 }

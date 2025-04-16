@@ -26,14 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full ">
       <body
-        className={`${geistSans.variable} font-sans ${geistMono.variable} antialiased h-full max-w-lg px-4 
+        className={`${geistSans.variable} font-sans ${geistMono.variable} antialiased h-full max-w-lg m-auto px-4 
         
         `}
       >
-      <div className="flex flex-col gap-4">
-          <Header />
+
+
           {children}
-      </div>
+
       </body>
     </html>
   );

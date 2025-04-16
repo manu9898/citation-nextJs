@@ -19,11 +19,16 @@ return (
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
             {citations.map(citation => (
-                <Card className="p-4 flex items-start gap-4" key={citation.id}>
+                <Card className="p-4 flex flex-row items-start gap-4" key={citation.id}>
                     <div className="flex flex-col gap-2 flex-1">
                         <p>{citation.text}</p>
                         <p>-- {citation.author}</p>
-                    </div><DeleteCitationButton id={citation.id}/>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <DeleteCitationButton id={citation.id}/>
+                        <Link className={buttonVariants({size: "sm", variant: "outline"})} href={`/admin/citations/${citation.id}`}>✏️ </Link>
+                        <Link className={buttonVariants({size: "sm", variant: "outline"})} href={`/citations/${citation.id}`}>🔗 </Link>
+                    </div>
                 </Card>
             ))}
             <Link className={buttonVariants({size: "lg", variant: "outline"})} href="/admin/citations/new">Create citation</Link>

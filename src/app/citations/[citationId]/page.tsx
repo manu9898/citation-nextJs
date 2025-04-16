@@ -22,10 +22,14 @@ export default async function Page(props:{
             <CardTitle>The citation {citationId} not exist</CardTitle>
         </Card>
     }
-return <Card className="p-4 flex items-start gap-4" key={citation.id}>
-    <div className="flex flex-col gap-2 flex-1">
-        <p>{citation.text}</p>
-        <p>-- {citation.author}</p>
+return (
+    <div className="min-h-full flex items-center justify-center">
+        <Card className="p-4 max-w-sm m-auto flex items-start gap-4" key={citation.id}>
+            <div className="flex flex-col gap-2 flex-1">
+                <p>{citation.text}</p>
+                <p>-- {citation.author}</p>
+            </div>
+        </Card>
     </div>
-</Card>
+)
 }
